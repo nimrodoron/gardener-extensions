@@ -1,5 +1,5 @@
 image:
-  repository: eu.gcr.io/gardener-project/gardener/gardener-extension-hyper
+  repository: docker.io/nimrodoron/gardener-extension-hyper
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -8,5 +8,8 @@ resources: {}
 controllers:
   concurrentSyncs: 5
   ignoreOperationAnnotation: false
+
+webhookConfig:
+  serverPort: 443
 
 disableControllers: []

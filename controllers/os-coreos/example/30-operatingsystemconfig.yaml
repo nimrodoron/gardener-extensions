@@ -2,10 +2,10 @@
 apiVersion: extensions.gardener.cloud/v1alpha1
 kind: OperatingSystemConfig
 metadata:
-  name: pool-01-original
+  name: pool-08-original
   namespace: shoot--foo--bar
 spec:
-  type: coreos
+  type: ubuntu
   units:
   - name: docker.service
     dropIns:
