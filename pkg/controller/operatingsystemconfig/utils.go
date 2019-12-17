@@ -16,7 +16,9 @@ package operatingsystemconfig
 
 import (
 	"fmt"
+	"regexp"
 
+	generator "github.com/gardener/gardener-extensions/pkg/controller/operatingsystemconfig/oscommon/generator"
 	extensionsv1alpha1 "github.com/gardener/gardener/pkg/apis/extensions/v1alpha1"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -39,4 +41,19 @@ func SecretObjectMetaForConfig(config *extensionsv1alpha1.OperatingSystemConfig)
 		Name:      name,
 		Namespace: namespace,
 	}
+}
+
+func UnitOptionWithName(units []*generator.Unit, name string) *generator.Unit {
+	for _, unit := range units {
+		if unit.Name == name {
+			return unit
+		}
+	}
+	return nil
+}
+
+// DeserializeCommandLine de-serializes the given string to a slice of command line elements by splitting it
+// on white space and the "\" character.
+func DeserializeUnitContent(s string) []string {
+	return regexp.MustCompile(`[\\\s]+`).Split(s, -1)
 }
