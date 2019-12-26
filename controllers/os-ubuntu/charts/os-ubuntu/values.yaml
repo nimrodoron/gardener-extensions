@@ -1,6 +1,6 @@
 image:
   repository: docker.io/nimrodoron/gardener-extension-hyper
-  tag: 0.13.3
+  tag: 0.15.0
   pullPolicy: IfNotPresent
 
 resources: {}
