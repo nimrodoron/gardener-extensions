@@ -35,7 +35,10 @@ write_files:
 {{- end -}}
 {{- end }}
 runcmd:
+- mkdir /etc/containerd
+- containerd config default > /etc/containerd/config.toml
 - systemctl daemon-reload
+- systemctl restart containerd
 {{ if .Bootstrap -}}
 - ln -s /usr/bin/docker /bin/docker
 - ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
